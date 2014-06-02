@@ -17,13 +17,15 @@ public class Combinacion {
     
     int n;
     int r;
+    LinkedList<LinkedList> ignorados ;
     
 
     
-    public LinkedList<LinkedList> generar(int n, int r) {
+    public LinkedList<LinkedList> generar(int n, int r, LinkedList<LinkedList> ignorados) {
         
         this.n = n;
         this.r = r;
+        this.ignorados = ignorados;
             
         if ((n - r) > r) {
             permutaciones = factorial(n, n - r) / factorial(r, 1);

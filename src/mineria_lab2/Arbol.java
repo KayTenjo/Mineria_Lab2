@@ -8,6 +8,7 @@ package mineria_lab2;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.Objects;
 /**
  *
  * @author Kay
@@ -24,41 +25,30 @@ public class Arbol {
     
     
     
-    public Arbol(int ctd_nombres, LinkedList<LinkedList> arreglo){
-    
+    public Arbol(LinkedList<LinkedList> arreglo, int num_columnas, int indice_clase, double sop_min){
+        // datos, numero de columnas, indice_clase, soporte minimo
         //// Necesito la cantidad de nombres para saber como generar la combinación
-        cantidad_nombres = ctd_nombres;
+        cantidad_nombres = num_columnas;
         cantidad_datos = arreglo.size();
-        
-       datos = arreglo;
+        posicion_clase = indice_clase;
+        soporte_min = sop_min;
+        datos = arreglo;
        
     }
     
     
     public void generarCombinacion(){
     
-        int cantidad_aux = 3;
-        int[] datos_aux= {0,1,2};
-        int indice_clase = 2;
-        soporte_min =0.2;
-        posicion_clase=2;
-        ArrayList<Integer> iter = new ArrayList();
-        iter.add(0);
-        iter.add(1);
-        iter.add(2);
-        
-       
-    
         //LinkedList<Integer> arreglo = new LinkedList();
         int aux =1;
-        int tamano = datos_aux.length;
+        
          Combinacion combinacion = new Combinacion();
          LinkedList<LinkedList> ignorados = new LinkedList();
          
         
-        while(tamano >=aux){
+        while(cantidad_nombres >=aux){
             
-            LinkedList<LinkedList> combinaciones = combinacion.generar(tamano, aux); // Aquí se genera una lista de combinaciones
+            LinkedList<LinkedList> combinaciones = combinacion.generar(cantidad_nombres, aux,ignorados); // Aquí se genera una lista de combinaciones
             for (LinkedList<Integer> arreglo : combinaciones){
                boolean ignorar= false;                
                 
@@ -67,7 +57,7 @@ public class Arbol {
                     int contador=0;
                     for (int i=0; i<largoElemIgn;i++){
                     
-                        if(elem_ignorado.get(i) == arreglo.get(i)){
+                        if(Objects.equals(elem_ignorado.get(i), arreglo.get(i))){
                             contador++;
                         }
                     
@@ -76,6 +66,7 @@ public class Arbol {
                     if (contador == largoElemIgn){
                         ignorar = true;
                         System.out.println("Ignore a la combinación" + arreglo);
+                        break;
                     }
                 }
                 
