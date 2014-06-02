@@ -17,6 +17,7 @@ public class Regla {
     
     double soporte;
     double confianza;
+    int oli;
     LinkedList<Integer> arreglo;
     String regla;
 
@@ -53,13 +54,38 @@ public class Regla {
     }
     
     
-    public String generarRegla(){
+    public void generarRegla(LinkedList<String> lista_nombres, int indice_clase){
     
-        String regla = null;
-        
-        
-        return regla;
+        String regla = "";
+        System.out.println(indice_clase);
+        boolean marcador_clase = false;
+        for(int i=0; i<arreglo.size(); i++){
+    
+            if (this.arreglo.get(i).equals(1)){
+                
+                if (i >= indice_clase && !marcador_clase){
+                    
+                regla = regla +  "=> " + lista_nombres.get(i)+" ";
+                marcador_clase = true;
+            }
+            
+                else {
+
+                    regla =regla + lista_nombres.get(i) + " ";
+                }
+            }
     }
+      
+        this.regla = regla;
+        System.out.println(regla);
+        
+    }
+
+    
+    
+    // public double compareTo(Regla o) {
+     //   return this.confianza.compareTo(o.confianza);
+       //     }
 
     
 }

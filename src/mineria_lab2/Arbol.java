@@ -37,13 +37,14 @@ public class Arbol {
     }
     
     
-    public void generarCombinacion(){
+    public LinkedList<Regla> generarCombinacion(){
     
         //LinkedList<Integer> arreglo = new LinkedList();
         int aux =1;
         
          Combinacion combinacion = new Combinacion();
          LinkedList<LinkedList> ignorados = new LinkedList();
+         LinkedList<Regla> lista_reglas = new LinkedList();
          
         
         while(cantidad_nombres >=aux){
@@ -89,7 +90,7 @@ public class Arbol {
                     }
                     
                     if ((cont_antec >0) && (cont_consec >0)){
-                        agregarRegla(obtenerSoporte(arreglo), arreglo);
+                        lista_reglas.add(agregarRegla(obtenerSoporte(arreglo), arreglo));
                     }
                 
                 }     
@@ -113,6 +114,7 @@ public class Arbol {
         
         }
         
+        return lista_reglas;
     }
 
                 
@@ -161,7 +163,7 @@ public class Arbol {
         //return ocurrencias;
     }
     
-    public void agregarRegla(double soporte, LinkedList<Integer> arreglo){
+    public Regla agregarRegla(double soporte, LinkedList<Integer> arreglo){
     
         Regla regla = new Regla();
         
@@ -191,7 +193,7 @@ public class Arbol {
         System.out.println("El antecedente es " + arreglo_antecedente + " y su soporte es " + soporte_antecedente);
         System.out.println("La confianza de la regla es " + regla.getConfianza() + "....." + soporte/soporte_antecedente);
         
-    
+        return regla;
     }
     
     
