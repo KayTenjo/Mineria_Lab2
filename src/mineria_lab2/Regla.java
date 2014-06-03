@@ -57,7 +57,7 @@ public class Regla {
     public void generarRegla(LinkedList<String> lista_nombres, int indice_clase){
     
         String regla = "";
-        System.out.println(indice_clase);
+        //System.out.println(indice_clase);
         boolean marcador_clase = false;
         for(int i=0; i<arreglo.size(); i++){
     
@@ -77,7 +77,7 @@ public class Regla {
     }
       
         this.regla = regla;
-        System.out.println(regla);
+        //System.out.println(regla);
         
     }
 

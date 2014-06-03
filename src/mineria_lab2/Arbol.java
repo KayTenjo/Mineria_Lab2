@@ -66,13 +66,13 @@ public class Arbol {
                     
                     if (contador == largoElemIgn){
                         ignorar = true;
-                        System.out.println("Ignore a la combinación" + arreglo);
+                        //System.out.println("Ignore a la combinación" + arreglo);
                         break;
                     }
                 }
                 
                 if (!ignorar){
-                System.out.println("El soporte de:" + arreglo+ " es " +obtenerSoporte(arreglo));
+               // System.out.println("El soporte de:" + arreglo+ " es " +obtenerSoporte(arreglo));
             
                 if(obtenerSoporte(arreglo) >= soporte_min){
                     

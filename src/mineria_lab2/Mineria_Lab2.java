@@ -58,11 +58,13 @@ public class Mineria_Lab2 {
                 }
             }
             System.out.println("Se han eliminado: " + contador_eliminados + " filas por datos perdidos.");
+            System.out.println("");
 
             //Leer nombres de clases y valores que pueden tomar
             fila_temp = scanner_names.nextLine();
             if (fila_temp.lastIndexOf(".") == fila_temp.length() - 1) {
                 fila_temp = fila_temp.substring(0, fila_temp.length() - 1);
+               
             }
             String[] clase_temp = fila_temp.split(",");
             int i, j;
@@ -78,11 +80,15 @@ public class Mineria_Lab2 {
             variables[0] = new LinkedList();
             variables[1] = new LinkedList();
             variables[2] = new LinkedList();
+
             while (scanner_names.hasNext()) {
                 fila_temp = scanner_names.nextLine().replace(":", ",");
                 fila_temp = fila_temp.replaceAll("\\s", ""); //quitar todos los espacios
                 if (!fila_temp.isEmpty()) {
-                    fila_temp = fila_temp.substring(0, fila_temp.length() - 1); //Le quito el punto al final
+                    if (fila_temp.lastIndexOf(".") == fila_temp.length() - 1) {
+                        fila_temp = fila_temp.substring(0, fila_temp.length() - 1);
+                        
+                    } //Le quito el punto al final
                     String[] atributo_temp = fila_temp.split(",");
                     for (i = 1; i < atributo_temp.length; i++) {
                         variables[0].add(atributo_temp[0] + "_" + atributo_temp[i]); //nombre_valorNominal
@@ -94,8 +100,9 @@ public class Mineria_Lab2 {
                     ++indice_clase;
                 }
             }
-
+           
             System.out.println("Binarizando los datos de entrada. . .");
+            System.out.println("");
             //Parte que crea la matriz con los datos binarizados
             for (i = 0; i < datos.size(); i++) {
                 LinkedList temp = new LinkedList();
@@ -116,7 +123,8 @@ public class Mineria_Lab2 {
                 }
                 datos_procesados.add(temp);
             }
-            int contadorDeCeros,columnasBorradas=0;
+            
+            int contadorDeCeros, columnasBorradas = 0;
             for (j = 0; j < variables[0].size(); j++) {
                 contadorDeCeros = 0;
                 for (i = 0; i < datos_procesados.size(); i++) {
@@ -132,12 +140,13 @@ public class Mineria_Lab2 {
                     variables[0].remove(j);
                     variables[1].remove(j);
                     variables[2].remove(j);
-                    --indice_clase;
+                    --indice_clase_procesados;
                 }
 
             }
-            System.out.println("Binarización realizada. Se borraron "+columnasBorradas+" atributos que no tenían valores verdaderos.");
-
+            System.out.println("Binarización realizada. Se borraron " + columnasBorradas + " atributos que no tenían valores verdaderos.");
+            System.out.println("");
+           
 
 
             Arbol arbol = new Arbol(datos_procesados, datos_procesados.get(0).size(), indice_clase_procesados, soporte_minimo); // datos, numero de columnas, indice_clase, soporte minimo
@@ -165,7 +174,8 @@ public class Mineria_Lab2 {
 
 
 
-            System.out.println("Las " + mejores_reglas + " mejores reglas según soporte son");
+            System.out.println("Las " + mejores_reglas + " mejores reglas según soporte son:");
+            System.out.println("");
 
             if (lista_reglas_soporte.size() == 0) {
 
@@ -209,7 +219,7 @@ public class Mineria_Lab2 {
                 System.out.println("No existen reglas que cumplan con el soporte minimo indicado");
             } else {
 
-                System.out.println("Las " + mejores_reglas + " mejores reglas según confianza son");
+                System.out.println("Las " + mejores_reglas + " mejores reglas según confianza son:");
                 System.out.println("");
                 if (mejores_reglas < lista_reglas_confianza.size()) {
 
