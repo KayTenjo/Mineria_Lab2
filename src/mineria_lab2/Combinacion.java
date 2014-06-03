@@ -49,10 +49,10 @@ public class Combinacion {
         
         
         for (int i = 0; i < r; i++) {
-            System.out.format("%3d", indices[i]); //acÃ¡ dentro estÃ¡n los Ã­ndices y aquÃ­ debe hacerse el cÃ¡lculo de la cosa
+            //System.out.format("%3d", indices[i]); //acÃ¡ dentro estÃ¡n los Ã­ndices y aquÃ­ debe hacerse el cÃ¡lculo de la cosa
             resultado.add(indices[i]);
         }
-        System.out.println("");
+        //System.out.println("");
         return resultado;
     }
 

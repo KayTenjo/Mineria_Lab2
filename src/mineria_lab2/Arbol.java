@@ -107,8 +107,8 @@ public class Arbol {
                     ignorados.add(arreglo);
                 }
             }
-         System.out.println("Los ignorados de esta iteracion son ");
-                    System.out.println(ignorados);   
+        // System.out.println("Los ignorados de esta iteracion son ");
+          //          System.out.println(ignorados);   
          aux++;
          
         
@@ -190,8 +190,8 @@ public class Arbol {
         
         regla.setConfianza((double)soporte/(double)soporte_antecedente);
         //System.out.println(soporte);
-        System.out.println("El antecedente es " + arreglo_antecedente + " y su soporte es " + soporte_antecedente);
-        System.out.println("La confianza de la regla es " + regla.getConfianza() + "....." + soporte/soporte_antecedente);
+        //System.out.println("El antecedente es " + arreglo_antecedente + " y su soporte es " + soporte_antecedente);
+        //System.out.println("La confianza de la regla es " + regla.getConfianza() + "....." + soporte/soporte_antecedente);
         
         return regla;
     }
