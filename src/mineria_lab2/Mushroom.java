@@ -20,7 +20,7 @@ import java.util.logging.Logger;
  *
  * @author Kay
  */
-public class Mineria_Lab2 {
+public class Mushroom {
 
     /**
      * @param args the command line arguments
@@ -145,7 +145,10 @@ public class Mineria_Lab2 {
 
             }
             System.out.println("Binarización realizada. Se borraron " + columnasBorradas + " atributos que no tenían valores verdaderos.");
+            
             System.out.println("");
+            
+            
            
 
 
@@ -255,7 +258,7 @@ public class Mineria_Lab2 {
             }
         } //TODO: Entregarle el primer índice desde donde hay clase
         catch (FileNotFoundException ex) {
-            Logger.getLogger(Mineria_Lab2.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Mushroom.class.getName()).log(Level.SEVERE, null, ex);
         }
 
 
