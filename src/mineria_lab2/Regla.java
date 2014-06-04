@@ -3,10 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package mineria_lab2;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 
 /**
@@ -14,12 +12,29 @@ import java.util.LinkedList;
  * @author Kay
  */
 public class Regla {
-    
+
     double soporte;
     double confianza;
     int oli;
     LinkedList<Integer> arreglo;
     String regla;
+
+    //Toma los índices de la combinación y genera la regla con los nombres de las variables para la impresión.
+    public void generarRegla(LinkedList<String> lista_nombres, int indice_clase) {
+        String regla = "";
+        boolean marcador_clase = false;
+        for (int i = 0; i < arreglo.size(); i++) {
+            if (this.arreglo.get(i).equals(1)) {
+                if (i >= indice_clase && !marcador_clase) {
+                    regla = regla + "=> " + lista_nombres.get(i) + " ";
+                    marcador_clase = true;
+                } else {
+                    regla = regla + lista_nombres.get(i) + " ";
+                }
+            }
+        }
+        this.regla = regla;
+    }
 
     public double getSoporte() {
         return soporte;
@@ -52,40 +67,4 @@ public class Regla {
     public void setRegla(String regla) {
         this.regla = regla;
     }
-    
-    
-    public void generarRegla(LinkedList<String> lista_nombres, int indice_clase){
-    
-        String regla = "";
-        //System.out.println(indice_clase);
-        boolean marcador_clase = false;
-        for(int i=0; i<arreglo.size(); i++){
-    
-            if (this.arreglo.get(i).equals(1)){
-                
-                if (i >= indice_clase && !marcador_clase){
-                    
-                regla = regla +  "=> " + lista_nombres.get(i)+" ";
-                marcador_clase = true;
-            }
-            
-                else {
-
-                    regla =regla + lista_nombres.get(i) + " ";
-                }
-            }
-    }
-      
-        this.regla = regla;
-        //System.out.println(regla);
-        
-    }
-
-    
-    
-    // public double compareTo(Regla o) {
-     //   return this.confianza.compareTo(o.confianza);
-       //     }
-
-    
 }
